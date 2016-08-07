@@ -1,0 +1,12 @@
+solution b'even'
+solution b'_a_t'
+solution b'iny_'
+solution b'rela'
+solution b'tive'
+solution b'_lea'
+solution b'k_wi'
+solution b'll_p'
+solution b'wn_t'
+solution b'hing'
+solution b's\n\x00\x00'
+even_a_tiny_relative_leak_will_pwn_things

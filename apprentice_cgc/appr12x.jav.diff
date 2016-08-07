@@ -1,0 +1,180 @@
+--- appr1x.jav	2016-08-06 11:51:45.350666271 -0700
++++ appr2x.jav	2016-08-06 11:20:42.515761223 -0700
+@@ -458,7 +458,7 @@
+  804874b: PUSH ECX
+  804874c: PUSH ESI
+  804874d: PUSH DWORD 0x8048909 ; '\x8dL$\x04\x83\xe4\xf0\xffq\xfcU\x89\xe5SQ\x81\xec'
+- 8048752: CALL 8048d00 <libc_start_main>
++ 8048752: CALL 8048d00 <sub_8048d00>
+  8048757: HLT ; 
+  8048758: NOP
+  804875a: NOP
+@@ -571,7 +571,7 @@
+  804887c: PUSH EBP
+  804887d: MOV EBP, ESP ; EBP = ESP; 
+  804887f: SUB ESP, 0x18 ; ESP -= 0x18; 
+- 8048882: CALL 80489f6 <get_ax_pc_thunk>
++ 8048882: CALL 80489f6 <sub_80489f6>
+  8048887: ADD EAX, 0xa1779 ; EAX += 0xa1779; 
+  804888c: LEA EAX, [EBP-0xc]
+  804888f: MOV [EBP-0xc], EAX ; [EBP-0xc] = EAX; 
+@@ -580,19 +580,19 @@
+  8048897: NOP
+  8048898: LEAVE ; leave
+  8048899: RET
+-vulnerable2?:
++sub_804889a:
+  804889a: PUSH EBP
+  804889b: MOV EBP, ESP ; EBP = ESP; 
+  804889d: PUSH EBX
+- 804889e: SUB ESP, 0x2fe4 ; ESP -= 0x2fe4; 
+- 80488a4: CALL 80489f6 <get_ax_pc_thunk>
+- 80488a9: ADD EAX, 0xa1757 ; EAX += 0xa1757; 0x80ea000
++ 804889e: SUB ESP, 0x3e34 ; ESP -= 0x3e34; 
++ 80488a4: CALL 80489f6 <sub_80489f6>
++ 80488a9: ADD EAX, 0xa1757 ; EAX += 0xa1757; 
+  80488ae: LEA EDX, [0x80ea4bc]
+  80488b4: MOV EDX, [EDX] ; EDX = [EDX]; 
+  80488b6: SUB ESP, 0x4 ; ESP -= 0x4; 
+  80488b9: PUSH EDX
+- 80488ba: PUSH DWORD 0x33d4
+- 80488bf: LEA EDX, [EBP-0x2fdc] ; 0x80e7024
++ 80488ba: PUSH DWORD 0x4230
++ 80488bf: LEA EDX, [EBP-0x3e38]
+  80488c5: PUSH EDX
+  80488c6: MOV EBX, EAX ; EBX = EAX; 
+  80488c8: CALL 804f1f0 <sub_804f1f0>
+@@ -601,27 +601,25 @@
+  80488d5: MOV EBX, [EBP-0x4] ; EBX = [EBP-0x4]; 
+  80488d8: LEAVE ; leave
+  80488d9: RET ; return 0x0;
+-vulnerable?:
++sub_80488da:
+  80488da: PUSH EBP
+  80488db: MOV EBP, ESP ; EBP = ESP; 
+  80488dd: PUSH EBX
+  80488de: SUB ESP, 0x14 ; ESP -= 0x14; 
+- 80488e1: CALL 80489f6 <get_ax_pc_thunk> 
+- 80488e6: ADD EAX, 0xa171a ; EAX += 0xa171a; 0x80ea000
++ 80488e1: CALL 80489f6 <sub_80489f6>
++ 80488e6: ADD EAX, 0xa171a ; EAX += 0xa171a; 
+  80488eb: LEA EDX, [EBP-0xc]
+  80488ee: SUB ESP, 0x8 ; ESP -= 0x8; 
+  80488f1: PUSH EDX
+- 80488f2: LEA EDX, [EAX-0x2ea98] ; 0x80bb568 "0x%x"
++ 80488f2: LEA EDX, [EAX-0x2ea98]
+  80488f8: PUSH EDX
+  80488f9: MOV EBX, EAX ; EBX = EAX; 
+- ;printf("0x%x", stack)
+  80488fb: CALL 804ed10 <sub_804ed10>
+  8048900: ADD ESP, 0x10 ; ESP += 0x10; 
+  8048903: NOP
+  8048904: MOV EBX, [EBP-0x4] ; EBX = [EBP-0x4]; 
+  8048907: LEAVE ; leave
+  8048908: RET
+-main:
+  8048909: LEA ECX, [ESP+0x4]
+  804890d: AND ESP, -0x10 ; ESP &= -0x10; 
+  8048910: PUSH DWORD [ECX-0x4]
+@@ -655,26 +653,23 @@
+  804896b: PUSH EAX
+  804896c: LEA EAX, [EBX-0x2ea92]  ; 0x80bb56e '%128s'
+  8048972: PUSH EAX
+- ; scanf("%128s")?
+  8048973: CALL 804ed50 <sub_804ed50>
+  8048978: ADD ESP, 0x10 ; ESP += 0x10; 
+  804897b: TEST EAX, EAX ;
+  804897d: JZ 0x80489e7 ; if(EAX) {
+  804897f: SUB ESP, 0x8 ; ESP -= 0x8; 
+- 8048982: LEA EAX, [EBX-0x2ea8c]  ; 0x80bb574 'cgnmtfuneawehcocfziftajjqungzqnb'
++ 8048982: LEA EAX, [EBX-0x2ea8c]  ; 0x80bb574 'unmshfqbkfdvxndjxryezfspkqlfuzir'
+  8048988: PUSH EAX
+  8048989: LEA EAX, [EBP-0x408]
+  804898f: PUSH EAX
+- ; strcmp?
+  8048990: CALL 8048280 <sub_8048280>
+  8048995: ADD ESP, 0x10 ; ESP += 0x10; 
+  8048998: TEST EAX, EAX ;
+  804899a: JNZ 0x80489e0 ; if(!EAX) {
+- 804899c: CALL 80488da <vulnerable?>
++ 804899c: CALL 80488da <sub_80488da>
+  80489a1: SUB ESP, 0x8 ; ESP -= 0x8; 
+  80489a4: LEA EAX, [EBP-0x408]
+  80489aa: PUSH EAX
+- ; scanf("%128s")?
+  80489ab: LEA EAX, [EBX-0x2ea92]  ; 0x80bb56e '%128s'
+  80489b1: PUSH EAX
+  80489b2: CALL 804ed50 <sub_804ed50>
+@@ -682,16 +677,15 @@
+  80489ba: TEST EAX, EAX ;
+  80489bc: JZ 0x80489e0 ; if(EAX) {
+  80489be: SUB ESP, 0x8 ; ESP -= 0x8; 
+- 80489c1: LEA EAX, [EBX-0x2ea68]  ; 0x80bb598 'ytbqpcvjsiiepwjxfanehxrlhiwbacfg'
++ 80489c1: LEA EAX, [EBX-0x2ea68]  ; 0x80bb598 'eclicyxvfjgpeivwyctkymiswfptwcsj'
+  80489c7: PUSH EAX
+  80489c8: LEA EAX, [EBP-0x408]
+  80489ce: PUSH EAX
+- ; strcmp?
+  80489cf: CALL 8048280 <sub_8048280>
+  80489d4: ADD ESP, 0x10 ; ESP += 0x10; 
+  80489d7: TEST EAX, EAX ;
+  80489d9: JNZ 0x80489e0 ; if(!EAX) {
+- 80489db: CALL 804889a <vulnerable2?>
++ 80489db: CALL 804889a <sub_804889a>
+ ; }
+  80489e0: MOV EAX, 0x0 ; EAX = 0x0; 
+  80489e5: JMP 0x80489ec ; goto 
+@@ -703,7 +697,7 @@
+  80489f1: POP EBP ; POP EBP
+  80489f2: LEA ESP, [ECX-0x4]
+  80489f5: RET
+-get_ax_pc_thunk:
++sub_80489f6:
+  80489f6: MOV EAX, [ESP] ; EAX = [ESP]; 
+  80489f9: RET
+  80489fa: NOP
+@@ -952,7 +946,7 @@
+  8048cfd: POP EBP ; POP EBP
+  8048cfe: RET
+  8048cff: NOP
+-libc_start_main:
++sub_8048d00:
+  8048d00: PUSH EBP
+  8048d01: PUSH EDI
+  8048d02: XOR EAX, EAX ; EAX = 0
+@@ -138027,7 +138021,7 @@
+  80b6bbe: JMP 0x80b674a ; goto 
+  80b6bc3: LEA ESI, [ESI+0x0]
+  80b6bc9: LEA EDI, [EDI+0x0]
+- 80b6bd0: CALL 80489f6 <get_ax_pc_thunk>
++ 80b6bd0: CALL 80489f6 <sub_80489f6>
+  80b6bd5: ADD EAX, 0x3342b ; EAX += 0x3342b; 
+  80b6bda: MOV BYTE [EAX+0x1e50], 0x4 ; '\x04'
+  80b6be1: MOV BYTE [EAX+0x1e52], 0x4 ; '\x04'
+@@ -140172,7 +140166,7 @@
+  80b866d: PUSH EAX
+  80b866e: LEA EDX, [EBP+0x8]
+  80b8671: LEA EBX, [EBP-0x98]
+- 80b8677: CALL 80489f6 <get_ax_pc_thunk>
++ 80b8677: CALL 80489f6 <sub_80489f6>
+  80b867c: ADD EAX, 0x31984 ; EAX += 0x31984; 
+  80b8681: SUB ESP, 0x114 ; ESP -= 0x114; 
+  80b8687: MOV ECX, [EBP+0x4] ; ECX = [EBP+0x4]; 
+@@ -141028,7 +141022,7 @@
+  80b8f61: PUSH EDI
+  80b8f62: PUSH ESI
+  80b8f63: PUSH EBX
+- 80b8f64: CALL 80489f6 <get_ax_pc_thunk>
++ 80b8f64: CALL 80489f6 <sub_80489f6>
+  80b8f69: ADD EAX, 0x31097 ; EAX += 0x31097; 
+  80b8f6e: SUB ESP, 0x5c ; ESP -= 0x5c; 
+  80b8f71: MOV EDX, [ESP+0x70] ; EDX = [ESP+0x70]; 
+@@ -142886,7 +142880,7 @@
+  80ba5f1: PUSH EDI
+  80ba5f2: PUSH ESI
+  80ba5f3: PUSH EBX
+- 80ba5f4: CALL 80489f6 <get_ax_pc_thunk>
++ 80ba5f4: CALL 80489f6 <sub_80489f6>
+  80ba5f9: ADD EAX, 0x2fa07 ; EAX += 0x2fa07; 
+  80ba5fe: SUB ESP, 0x4c ; ESP -= 0x4c; 
+  80ba601: CMP DWORD [ESP+0x60], 0x1 ;

