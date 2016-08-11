@@ -2,15 +2,18 @@
 *Solution by [Neg9] Javantea*
 
 Files:
-* artisinal_assembly_0331fb4526b5ffee34f6ab66899bac0b
-* artisinal_assembly.jav
-* artisinal_assembly.dis
+* [artisinal_assembly_0331fb4526b5ffee34f6ab66899bac0b](https://github.com/Javantea/openctf-2016-writeups/blob/master/artisinal_assembly/artisinal_assembly_0331fb4526b5ffee34f6ab66899bac0b)
+* [artisinal_assembly.jav](https://github.com/Javantea/openctf-2016-writeups/blob/master/artisinal_assembly/artisinal_assembly.jav)
+* [artisinal_assembly.dis](https://github.com/Javantea/openctf-2016-writeups/blob/master/artisinal_assembly/artisinal_assembly.dis)
 
 Artisinal Assembly pretends to be a devilishly difficult reverse engineering challenge. With some crypto and steganography, this challenge could take the best hackers hours to solve. But it only took three hackers an hour or two to solve.
 
-This problem is solvable if you look at the output of objdump -d and think outside the box. In this hacking challenge, outside the box means streams in vertical. There's no canonical vertical in assembly, but there are a few tools that are very common. I didn't think of this until reversing every line of the assembly and understand that it could only ever have one output. Two of my teammates reversed this challenge completely and didn't come to the same conclusion after a half hour.
+This problem is solvable if you look at the output of objdump -d and think outside the box. In this hacking challenge, outside the box means streams in vertical. There's no true canonical vertical in assembly, but there are a few tools that are very common. I didn't think of this until reversing every line of the assembly and understand that it could only ever have one output. Two of my teammates reversed this challenge completely and didn't come to the same conclusion after a half hour.
 
-```
+```asm
+; See this row ||
+;   ^_^        ||
+;              VV
 0000000000400506 <main>:
   400506:	55                   	push   %rbp
   400507:	48 89 e5             	mov    %rsp,%rbp
